@@ -19,13 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/todo', function () {
-//     return view('todo.index');
-// });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/todo', function () {
+//     return view('./todo');
+// })->middleware(['auth', 'verified'])->name('todo.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,9 +33,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/todo', [ItemController::class, 'index'])->name('todo.index');
-    Route::post('/todo/edit', [ItemController::class, 'index'])->name('todo.edit');
-    Route::post('/todo/delete', [ItemController::class, 'index'])->name('todo.delete');
-    Route::post('/todo/entry', [ItemController::class, 'index'])->name('todo.entry');
+    Route::get('/todo/edit', [ItemController::class, 'edit'])->name('todo.edit');
+    Route::delete('/todo/delete', [ItemController::class, 'destroy'])->name('todo.destroy');
+    Route::post('/todo', [ItemController::class, 'store'])->name('todo.store');
+    Route::get('/todo/entry', [ItemController::class, 'create'])->name('todo.entry');
 });
 
 require __DIR__ . '/auth.php';

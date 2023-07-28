@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -22,7 +23,9 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $user = auth()->user();
+        return view('todo.entry', compact('users', 'user'));
     }
 
     /**
@@ -30,7 +33,12 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new Item();
+        $item->user_id=$request->user_id;
+        $item->item_name=$request->item_name;
+        $item->expire_date=$request->expire_date;
+        $item->save();
+        return back();
     }
 
     /**
@@ -46,7 +54,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('todo.edit', compact('item'));
     }
 
     /**

@@ -72,7 +72,8 @@
             <div class="row my-2">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
-                    <form action="./entry_action.php" method="post">
+                    <form action="{{route('todo.store')}}" method="post">
+                        @csrf
                         <div class="form-group">
                             <label for="item_name">項目名</label>
                             <input type="text" class="form-control" id="item_name" name="item_name">
@@ -81,9 +82,9 @@
                             <label for="user_id">担当者</label>
                             <select name="user_id" id="user_id" class="form-control">
                                 <option value="">--選択してください--</option>
-                                <option value="1">テスト花子</option>
-                                <option value="2">テスト太郎</option>
-                                <option value="3">さかがみただし</option>
+                                @foreach ($users as $user)
+                                    <option value="{{$user['id']}}">{{$user['name']}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
