@@ -45,15 +45,14 @@ class ItemController extends Controller
         $item->item_name = $request->item_name;
         $item->registration_date = $date;
         $item->expire_date = $request->expire_date;
-        // dd($request->finished_date);
-        if (isset($request->finished_date)){
+        if (isset($request->finished_date)) {
             $item->finished_date = $date;
         } else {
             $item->finished_date = null;
         }
 
         $item->save();
-        return back();
+        return redirect('./todo');
     }
 
     /**
