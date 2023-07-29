@@ -93,8 +93,8 @@
                                 value="{{ $date }}">
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="finished" name="finished">
-                            <label for="finished">完了</label>
+                            <input type="checkbox" class="form-check-input" id="finished_date" name="finished_date">
+                            <label for="finished_date">完了</label>
                         </div>
 
                         <input type="submit" value="登録" class="btn btn-primary">
