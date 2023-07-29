@@ -71,7 +71,9 @@
         <div class="row my-2">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
-                <form action="./edit_action.php" method="post">
+                <form action="{{ route('todo.update', $item) }}" method="post">
+                    @csrf
+                    @method('put')
                     <div class="form-group">
                         <label for="item_name">項目名</label>
                         <input type="text" name="item_name" id="item_name" class="form-control"
@@ -92,7 +94,9 @@
                             value="{{ $item->expire_date }}">
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="finished" name="finished" value="{{ isset($item->finished_date) ? 1 : 0}}" {{ isset($item->finished_date) ? 'checked' : ''}}>
+                        <input type="checkbox" class="form-check-input" id="finished" name="finished"
+                            value="{{ isset($item->finished_date) ? 1 : 0 }}"
+                            {{ isset($item->finished_date) ? 'checked' : '' }}>
                         <label for="finished">完了</label>
                     </div>
 

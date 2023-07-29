@@ -79,7 +79,24 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        //
+        $now = Carbon::now();
+        $date = $now->format('Y-m-d');
+
+        $item->user_id = $request->user_id;
+        $item->item_name = $request->item_name;
+        $item->expire_date = $request->expire_date;
+        if (isset($request->finished_date)) {
+            $item->finished_date = $date;
+        } else {
+            $item->finished_date = null;
+        }
+
+
+        // dd($item);
+
+        $item->save();
+
+        return redirect('./todo');
     }
 
     /**
