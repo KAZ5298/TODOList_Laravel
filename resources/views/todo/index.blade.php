@@ -41,7 +41,7 @@
                     <a class="nav-link" href="./">作業一覧 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./create">作業登録</a>
+                    <a class="nav-link" href="./todo/create">作業登録</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -106,15 +106,14 @@
                                     <input type="hidden" name="item_id" value="{{ $item['id'] }}">
                                     <button class="btn btn-primary my-0" type="submit">完了</button>
                                 </form>
-                                <form action="./edit" method="post" class="my-sm-1">
+                                <form action="{{ route('todo.edit', $item) }}" method="post" class="my-sm-1">
                                     @csrf
-                                    <input type="hidden" name="item_id" value="{{ $item['id'] }}">
+                                    @method('get')
                                     <input class="btn btn-primary my-0" type="submit" value="修正">
                                 </form>
-                                <a href="{{ route('todo.edit', $item->id) }}">修正</a>
-                                <form action="./delete" method="post" class="my-sm-1">
+                                <form action="{{ route('todo.destroy', $item) }}" method="post" class="my-sm-1">
                                     @csrf
-                                    <input type="hidden" name="item_id" value="{{ $item['id'] }}">
+                                    @method('delete')
                                     <input class="btn btn-primary my-0" type="submit" value="削除">
                                 </form>
                             </td>

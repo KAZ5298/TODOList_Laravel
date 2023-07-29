@@ -73,7 +73,7 @@
             <div class="col-sm-6">
                 <form action="{{ route('todo.update', $item) }}" method="post">
                     @csrf
-                    @method('put')
+                    @method('patch')
                     <div class="form-group">
                         <label for="item_name">項目名</label>
                         <input type="text" name="item_name" id="item_name" class="form-control"
