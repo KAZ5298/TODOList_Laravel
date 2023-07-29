@@ -14,11 +14,11 @@ class Item extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected $fillable = [
-        'user_id',
-        'item_name',
-        'registration_date',
-        'expire_date',
-        'finished_date',
-    ];
+    // protected $fillable = [
+    //     'user_id',
+    //     'item_name',
+    //     'registration_date',
+    //     'expire_date',
+    //     'finished_date',
+    // ];
 }

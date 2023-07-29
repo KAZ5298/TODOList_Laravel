@@ -25,7 +25,7 @@
                     <a class="nav-link" href="./">作業一覧</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="./entry.php">作業登録 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./create">作業登録 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -72,7 +72,7 @@
             <div class="row my-2">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
-                    <form action="{{route('todo.store')}}" method="post">
+                    <form action="{{ route('todo.store') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="item_name">項目名</label>
@@ -83,13 +83,14 @@
                             <select name="user_id" id="user_id" class="form-control">
                                 <option value="">--選択してください--</option>
                                 @foreach ($users as $user)
-                                    <option value="{{$user['id']}}">{{$user['name']}}</option>
+                                    <option value="{{ $user['id'] }}">{{ $user['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="expire_date">期限</label>
-                            <input type="date" class="form-control" id="expire_date" name="expire_date">
+                            <input type="date" class="form-control" id="expire_date" name="expire_date"
+                                value="{{ $date }}">
                         </div>
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="finished" name="finished">

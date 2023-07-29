@@ -41,12 +41,12 @@
                     <a class="nav-link" href="./">作業一覧 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./entry">作業登録</a>
+                    <a class="nav-link" href="./create">作業登録</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{$user['name']}}さん
+                        {{ $user['name'] }}さん
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <div class="dropdown-divider"></div>
@@ -62,7 +62,7 @@
         </div>
     </nav>
     <!-- ナビゲーション ここまで -->
-
+    {{-- <?= dd($items) ?> --}}
     <!-- コンテナ -->
     <div class="container">
 
@@ -111,7 +111,7 @@
                                     <input type="hidden" name="item_id" value="{{ $item['id'] }}">
                                     <input class="btn btn-primary my-0" type="submit" value="修正">
                                 </form>
-                                <a href="{{route('todo.edit',$item)}}">修正</a>
+                                <a href="{{ route('todo.edit', $item->id) }}">修正</a>
                                 <form action="./delete" method="post" class="my-sm-1">
                                     @csrf
                                     <input type="hidden" name="item_id" value="{{ $item['id'] }}">

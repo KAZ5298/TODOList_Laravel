@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -23,9 +24,12 @@ class ItemController extends Controller
      */
     public function create()
     {
+        $now = Carbon::now();
+        $date = $now->format('Y-m-d');
+
         $users = User::all();
         $user = auth()->user();
-        return view('todo.entry', compact('users', 'user'));
+        return view('todo.create', compact('date', 'users', 'user'));
     }
 
     /**
@@ -33,10 +37,14 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        $now = Carbon::now();
+        $date = $now->format('Y-m-d');
+
         $item = new Item();
-        $item->user_id=$request->user_id;
-        $item->item_name=$request->item_name;
-        $item->expire_date=$request->expire_date;
+        $item->user_id = $request->user_id;
+        $item->item_name = $request->item_name;
+        $item->registration_date = $date;
+        $item->expire_date = $request->expire_date;
         $item->save();
         return back();
     }
@@ -52,9 +60,12 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Item $item)
+    public function edit(Item $todo)
     {
-        return view('todo.edit', compact('item'));
+        $item = Item::find($todo->id);
+        $user = auth()->user();
+
+        return view('todo.edit', compact('item', 'user'));
     }
 
     /**
