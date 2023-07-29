@@ -37,7 +37,8 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/todo/delete', [ItemController::class, 'destroy'])->name('todo.destroy');
     // Route::post('/todo', [ItemController::class, 'store'])->name('todo.store');
     // Route::get('/todo/entry', [ItemController::class, 'create'])->name('todo.entry');
-    Route::resource('todo', ItemController::class);
 });
+
+Route::resource('todo', ItemController::class);
 
 require __DIR__ . '/auth.php';

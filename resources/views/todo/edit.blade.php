@@ -25,12 +25,12 @@
                     <a class="nav-link" href="../">作業一覧</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../entry.php">作業登録 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../create">作業登録 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ $user['name'] }}さん
+                        {{ $loginUser->name }}さん
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <div class="dropdown-divider"></div>
@@ -83,9 +83,10 @@
                         <label for="user_id">担当者</label>
                         <select name="user_id" id="user_id" class="form-control">
                             <option value="">--選択してください--</option>
-                            <option value="1" selected>テスト花子</option>
-                            <option value="2">テスト太郎</option>
-                            <option value="{{ $item->user_id }}">{{ $item->user_id }}</option>
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}" {{ $item->user->id == $user->id ? 'selected' : '' }}>
+                                    {{ $user->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
@@ -94,10 +95,10 @@
                             value="{{ $item->expire_date }}">
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="finished" name="finished"
+                        <input type="checkbox" class="form-check-input" id="finished_date" name="finished_date"
                             value="{{ isset($item->finished_date) ? 1 : 0 }}"
                             {{ isset($item->finished_date) ? 'checked' : '' }}>
-                        <label for="finished">完了</label>
+                        <label for="finished_date">完了</label>
                     </div>
 
                     <input type="submit" value="更新" class="btn btn-primary">

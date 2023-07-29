@@ -80,23 +80,23 @@
 
             <tbody>
                 @foreach ($items as $item)
-                    @if ($item['is_deleted'] != 1)
+                    @if ($item->is_deleted != 1)
                         <tr class="text-danger">
                             <td class="align-middle">
-                                {{ $item['item_name'] }}
+                                {{ $item->item_name }}
                             </td>
                             <td class="align-middle">
-                                {{ $item['user_id'] }}
+                                {{ $item->user->name }}
                             </td>
                             <td class="align-middle">
-                                {{ $item['registration_date'] }}
+                                {{ $item->registration_date }}
                             </td>
                             <td class="align-middle">
-                                {{ $item['expire_date'] }}
+                                {{ $item->expire_date }}
                             </td>
                             <td class="align-middle">
-                                @if (isset($item['finished_date']))
-                                    {{ $item['finished_date'] }}
+                                @if (isset($item->finished_date))
+                                    {{ $item->finished_date }}
                                 @else
                                     未
                                 @endif
