@@ -62,7 +62,9 @@
         <div class="row my-2">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
-                <form action="./delete_action.php" method="post">
+                <form action="{{ route('todo.destroy', $item) }}" method="post">
+                    @csrf
+                    @method('delete')
                     <div class="form-group">
                         <label for="item_name">項目名</label>
                         <p name="item_name" id="item_name" class="form-control">{{ $item->item_name }}</p>

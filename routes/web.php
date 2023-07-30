@@ -32,14 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Route::get('/todo', [ItemController::class, 'index'])->name('todo.index');
-    // Route::get('/todo/{todo}/edit', [ItemController::class, 'edit'])->name('todo.edit');
-    // Route::delete('/todo/delete', [ItemController::class, 'destroy'])->name('todo.destroy');
-    // Route::post('/todo', [ItemController::class, 'store'])->name('todo.store');
-    // Route::get('/todo/entry', [ItemController::class, 'create'])->name('todo.entry');
+    Route::resource('todo', ItemController::class);
+    Route::post('todo/{todo}/delete', [ItemController::class, 'delete'])->name('todo.delete');
+    Route::patch('todo/{todo}/complete', [ItemController::class, 'complete'])->name('todo.complete');
+
 });
 
-Route::resource('todo', ItemController::class);
-Route::post('todo/{todo}/delete', [ItemController::class, 'delete'])->name('todo.delete');
 
 require __DIR__ . '/auth.php';

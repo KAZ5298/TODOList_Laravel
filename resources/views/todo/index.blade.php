@@ -103,9 +103,10 @@
                                 @endif
                             </td>
                             <td class="align-middle button">
-                                <form action="./complete.php" method="post" class="my-sm-1">
-                                    <input type="hidden" name="item_id" value="{{ $item['id'] }}">
-                                    <button class="btn btn-primary my-0" type="submit">完了</button>
+                                <form action="{{ route('todo.complete', $item) }}" method="post" class="my-sm-1">
+                                    @csrf
+                                    @method('patch')
+                                    <input class="btn btn-primary my-0" type="submit" value="完了">
                                 </form>
                                 <form action="{{ route('todo.edit', $item) }}" method="post" class="my-sm-1">
                                     @csrf

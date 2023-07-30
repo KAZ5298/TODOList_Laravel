@@ -150,4 +150,18 @@ class ItemController extends Controller
 
         return view('todo.delete', compact('item', 'loginUser'));
     }
+
+    public function complete($id)
+    {
+        $item = Item::find($id);
+
+        $now = Carbon::now();
+        $date = $now->format('Y-m-d');
+
+        $item->finished_date = $date;
+
+        $item->save();
+
+        return redirect('./todo');
+    }
 }
