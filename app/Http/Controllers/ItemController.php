@@ -40,14 +40,20 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        $inputs = $request->validate([
+            'user_id' => 'required|integer|min:1',
+            'item_name' => 'required|max:100',
+            'expire_date' => 'required|date'
+        ]);
+
         $now = Carbon::now();
         $date = $now->format('Y-m-d');
 
         $item = new Item();
-        $item->user_id = $request->user_id;
-        $item->item_name = $request->item_name;
+        $item->user_id = $inputs['user_id'];
+        $item->item_name = $inputs['item_name'];
         $item->registration_date = $date;
-        $item->expire_date = $request->expire_date;
+        $item->expire_date = $inputs['expire_date'];
         if (isset($request->finished_date)) {
             $item->finished_date = $date;
         } else {
@@ -55,7 +61,7 @@ class ItemController extends Controller
         }
 
         $item->save();
-        
+
         return redirect()->route('todo.index');
     }
 
@@ -112,14 +118,20 @@ class ItemController extends Controller
 
     public function update(Request $request, $id)
     {
+        $inputs = $request->validate([
+            'user_id' => 'required|integer|min:1',
+            'item_name' => 'required|max:100',
+            'expire_date' => 'required|date'
+        ]);
+
         $item = Item::find($id);
 
         $now = Carbon::now();
         $date = $now->format('Y-m-d');
 
-        $item->user_id = $request->user_id;
-        $item->item_name = $request->item_name;
-        $item->expire_date = $request->expire_date;
+        $item->user_id = $inputs['user_id'];
+        $item->item_name = $inputs['item_name'];
+        $item->expire_date = $inputs['expire_date'];
         if (isset($request->finished_date)) {
             $item->finished_date = $date;
         } else {
