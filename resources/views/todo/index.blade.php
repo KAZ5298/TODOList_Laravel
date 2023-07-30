@@ -81,8 +81,21 @@
 
             <tbody>
                 @foreach ($items as $item)
+                    @if (isset($item->finished_date))
+                        @php
+                            $class = 'del';
+                        @endphp
+                    @elseif ($date > $item->expire_date)
+                        @php
+                            $class = 'text-danger';
+                        @endphp
+                    @else
+                        @php
+                            $class = '';
+                        @endphp
+                    @endif
                     @if ($item->is_deleted != 1)
-                        <tr class="text-danger">
+                        <tr class="{{ $class }}">
                             <td class="align-middle">
                                 {{ $item->item_name }}
                             </td>

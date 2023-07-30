@@ -14,9 +14,12 @@ class ItemController extends Controller
      */
     public function index()
     {
+        $now = Carbon::now();
+        $date = $now->format('Y-m-d');
+
         $items = Item::orderBy('expire_date', 'asc')->get();
         $loginUser = auth()->user();
-        return view('todo.index', compact('items', 'loginUser'));
+        return view('todo.index', compact('date', 'items', 'loginUser'));
     }
 
     /**
@@ -136,11 +139,22 @@ class ItemController extends Controller
     //     return redirect('./todo');
     // }
 
+    // public function destroy($id)
+    // {
+    //     $item = Item::find($id);
+    //     $item->delete();
+    //     return redirect('./todo');
+    // }
+
     public function destroy($id)
     {
         $item = Item::find($id);
-        $item->delete();
+
+        $item->is_deleted = 1;
+        $item->save();
+
         return redirect('./todo');
+
     }
 
     public function delete($id)
