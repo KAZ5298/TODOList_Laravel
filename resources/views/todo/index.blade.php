@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>作業一覧</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    {{-- <link rel="stylesheet" href="../css/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <style>
         /* ボタンを横並びにする */
         form {
@@ -41,7 +42,7 @@
                     <a class="nav-link" href="./">作業一覧 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./todo/create">作業登録</a>
+                    <a class="nav-link" href="./create">作業登録</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -128,8 +129,10 @@
     <!-- コンテナ ここまで -->
 
     <!-- 必要なJavascriptを読み込む -->
-    <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../js/bootstrap.bundle.min.js"></script>
+    {{-- <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script> --}}
+    <script src="{{ asset('/js/jquery-3.4.1.min.js"') }}"></script>
+    <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 
