@@ -55,7 +55,8 @@ class ItemController extends Controller
         }
 
         $item->save();
-        return redirect('./todo');
+        
+        return redirect()->route('todo.index');
     }
 
     /**
@@ -127,7 +128,7 @@ class ItemController extends Controller
 
         $item->save();
 
-        return redirect('./todo');
+        return redirect()->route('todo.index');
     }
 
     /**
@@ -153,8 +154,7 @@ class ItemController extends Controller
         $item->is_deleted = 1;
         $item->save();
 
-        return redirect('./todo');
-
+        return redirect()->route('todo.index');
     }
 
     public function delete($id)
@@ -176,6 +176,6 @@ class ItemController extends Controller
 
         $item->save();
 
-        return redirect('./todo');
+        return redirect()->route('todo.index');
     }
 }

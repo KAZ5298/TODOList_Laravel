@@ -23,10 +23,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../">作業一覧</a>
+                    <a class="nav-link" href="{{ route('todo.index') }}">作業一覧</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../create">作業登録 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('todo.create') }}">作業登録</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
