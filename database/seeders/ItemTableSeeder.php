@@ -15,7 +15,6 @@ class ItemTableSeeder extends Seeder
     {
         DB::table('items')->insert([
             [
-                'id' => 1,
                 'user_id' => 1,
                 'item_name' => 'test1',
                 'registration_date' => '2023-07-28',
@@ -24,7 +23,6 @@ class ItemTableSeeder extends Seeder
                 'is_deleted' => 0,
             ],
             [
-                'id' => 2,
                 'user_id' => 2,
                 'item_name' => 'test2',
                 'registration_date' => '2023-07-28',
@@ -33,7 +31,6 @@ class ItemTableSeeder extends Seeder
                 'is_deleted' => 0,
             ],
             [
-                'id' => 3,
                 'user_id' => 1,
                 'item_name' => 'test3',
                 'registration_date' => '2023-07-28',
@@ -42,7 +39,6 @@ class ItemTableSeeder extends Seeder
                 'is_deleted' => 0,
             ],
             [
-                'id' => 4,
                 'user_id' => 3,
                 'item_name' => 'test4',
                 'registration_date' => '2023-07-28',
@@ -51,7 +47,6 @@ class ItemTableSeeder extends Seeder
                 'is_deleted' => 0,
             ],
             [
-                'id' => 5,
                 'user_id' => 2,
                 'item_name' => 'test5',
                 'registration_date' => '2023-07-28',

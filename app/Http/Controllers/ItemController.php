@@ -15,8 +15,8 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::orderBy('expire_date', 'asc')->get();
-        $user = auth()->user();
-        return view('todo.index', compact('items', 'user'));
+        $loginUser = auth()->user();
+        return view('todo.index', compact('items', 'loginUser'));
     }
 
     /**
@@ -28,8 +28,8 @@ class ItemController extends Controller
         $date = $now->format('Y-m-d');
 
         $users = User::all();
-        $user = auth()->user();
-        return view('todo.create', compact('date', 'users', 'user'));
+        $loginUser = auth()->user();
+        return view('todo.create', compact('date', 'users', 'loginUser'));
     }
 
     /**
@@ -143,4 +143,11 @@ class ItemController extends Controller
         return redirect('./todo');
     }
 
+    public function delete($id)
+    {
+        $item = Item::find($id);
+        $loginUser = auth()->user();
+
+        return view('todo.delete', compact('item', 'loginUser'));
+    }
 }

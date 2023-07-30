@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>作業登録</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    {{-- <link rel="stylesheet" href="../css/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
 </head>
 
 <body>
@@ -30,7 +31,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ $user['name'] }}さん
+                        {{ $loginUser->name }}さん
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <div class="dropdown-divider"></div>
@@ -83,7 +84,7 @@
                             <select name="user_id" id="user_id" class="form-control">
                                 <option value="">--選択してください--</option>
                                 @foreach ($users as $user)
-                                    <option value="{{ $user['id'] }}">{{ $user['name'] }}</option>
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -110,8 +111,10 @@
         <!-- コンテナ ここまで -->
 
         <!-- 必要なJavascriptを読み込む -->
-        <script src="../js/jquery-3.4.1.min.js"></script>
-        <script src="../js/bootstrap.bundle.min.js"></script>
+        {{-- <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script> --}}
+        <script src="{{ asset('/js/jquery-3.4.1.min.js"') }}"></script>
+        <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 

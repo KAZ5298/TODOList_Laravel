@@ -47,7 +47,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ $user['name'] }}さん
+                        {{ $loginUser->name }}さん
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <div class="dropdown-divider"></div>
@@ -112,11 +112,15 @@
                                     @method('get')
                                     <input class="btn btn-primary my-0" type="submit" value="修正">
                                 </form>
-                                <form action="{{ route('todo.destroy', $item) }}" method="post" class="my-sm-1">
+                                <form action="{{ route('todo.delete', $item) }}" method="post" class="my-sm-1">
+                                    @csrf
+                                    <input class="btn btn-primary my-0" type="submit" value="削除">
+                                </form>
+                                {{-- <form action="{{ route('todo.destroy', $item) }}" method="post" class="my-sm-1">
                                     @csrf
                                     @method('delete')
                                     <input class="btn btn-primary my-0" type="submit" value="削除">
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @endif

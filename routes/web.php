@@ -40,5 +40,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('todo', ItemController::class);
+Route::post('todo/{todo}/delete', [ItemController::class, 'delete'])->name('todo.delete');
 
 require __DIR__ . '/auth.php';
