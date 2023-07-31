@@ -12,14 +12,22 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $now = Carbon::now();
         $date = $now->format('Y-m-d');
 
-        $items = Item::orderBy('expire_date', 'asc')->get();
         $loginUser = auth()->user();
-        return view('todo.index', compact('date', 'items', 'loginUser'));
+
+        // 通常の一覧表示か、検索結果か
+        $search = $request->input('search');
+        if (empty($search)) {
+            $items = Item::orderBy('expire_date', 'asc')->get();
+        } else {
+            $items = Item::query()->where('item_name', 'LIKE', "%{$search}%")->get();
+        }
+
+        return view('todo.index', compact('date', 'items', 'loginUser', 'search'));
     }
 
     /**
