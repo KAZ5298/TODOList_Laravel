@@ -24,7 +24,7 @@ class ItemController extends Controller
         if (empty($search)) {
             $items = Item::orderBy('expire_date', 'asc')->get();
         } else {
-            $items = Item::query()->where('item_name', 'LIKE', "%{$search}%")->get();
+            $items = Item::query()->where('item_name', 'LIKE', '%' . $search . '%')->get();
         }
 
         return view('todo.index', compact('date', 'items', 'loginUser', 'search'));

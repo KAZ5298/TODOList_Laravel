@@ -44,6 +44,6 @@ class User extends Authenticatable
     ];
 
     public function items() {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Item::class);
     }
 }
