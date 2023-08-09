@@ -124,15 +124,13 @@ class ItemController extends Controller
     //     return redirect('./todo');
     // }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $item)
     {
         $inputs = $request->validate([
             'user_id' => 'required|integer|min:1',
             'item_name' => 'required|max:100',
             'expire_date' => 'required|date'
         ]);
-
-        $item = Item::find($id);
 
         $now = Carbon::now();
         $date = $now->format('Y-m-d');
@@ -154,32 +152,16 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    // public function destroy(Item $item)
-    // {
-    //     $item->delete();
-    //     return redirect('./todo');
-    // }
-
-    // public function destroy($id)
-    // {
-    //     $item = Item::find($id);
-    //     $item->delete();
-    //     return redirect('./todo');
-    // }
-
-    public function destroy($id)
+    public function destroy(Item $item)
     {
-        $item = Item::find($id);
-
         $item->is_deleted = 1;
         $item->save();
 
         return redirect()->route('item.index');
     }
 
-    public function delete($id)
+    public function delete(Item $item)
     {
-        $item = Item::find($id);
         $loginUser = auth()->user();
 
         return view('item.delete', compact('item', 'loginUser'));

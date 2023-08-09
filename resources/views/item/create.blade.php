@@ -26,8 +26,7 @@
                     <a class="nav-link" href="{{ route('item.index') }}">作業一覧</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('item.create') }}">作業登録 <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('item.create') }}">作業登録 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -41,8 +40,7 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="./" method="get">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                    name="search" value="">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="">
                 <button class="btn btn-outline-light my-2 my-sm-0" type="submit">検索</button>
             </form>
         </div>

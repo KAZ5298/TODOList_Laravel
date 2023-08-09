@@ -33,7 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('item', ItemController::class);
-    Route::post('item/{itme}/delete', [ItemController::class, 'delete'])->name('item.delete');
+    Route::post('item/{item}/delete', [ItemController::class, 'delete'])->name('item.delete');
+    Route::patch('item/{item}/destroy', [ItemController::class, 'destroy'])->name('item.destroy');
     Route::patch('item/{item}/complete', [ItemController::class, 'complete'])->name('item.complete');
 
 });

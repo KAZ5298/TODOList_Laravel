@@ -64,7 +64,7 @@
             <div class="col-sm-6">
                 <form action="{{ route('item.destroy', $item) }}" method="post">
                     @csrf
-                    @method('delete')
+                    @method('patch')
                     <div class="form-group">
                         <label for="item_name">項目名</label>
                         <p name="item_name" id="item_name" class="form-control">{{ $item->item_name }}</p>
