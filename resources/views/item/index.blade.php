@@ -39,10 +39,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('todo.index') }}">作業一覧 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('item.index') }}">作業一覧 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('todo.create') }}">作業登録</a>
+                    <a class="nav-link" href="{{ route('item.create') }}">作業登録</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -55,7 +55,7 @@
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" action="{{ route('todo.index') }}" method="GET">
+            <form class="form-inline my-2 my-lg-0" action="{{ route('item.index') }}" method="GET">
                 {{-- @csrf --}}
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                     name="search" value="{{ $search }}">
@@ -117,21 +117,21 @@
                                 @endif
                             </td>
                             <td class="align-middle button">
-                                <form action="{{ route('todo.complete', $item) }}" method="post" class="my-sm-1">
+                                <form action="{{ route('item.complete', $item) }}" method="post" class="my-sm-1">
                                     @csrf
                                     @method('patch')
                                     <input class="btn btn-primary my-0" type="submit" value="完了">
                                 </form>
-                                <form action="{{ route('todo.edit', $item) }}" method="post" class="my-sm-1">
+                                <form action="{{ route('item.edit', $item) }}" method="post" class="my-sm-1">
                                     @csrf
                                     @method('get')
                                     <input class="btn btn-primary my-0" type="submit" value="修正">
                                 </form>
-                                <form action="{{ route('todo.delete', $item) }}" method="post" class="my-sm-1">
+                                <form action="{{ route('item.delete', $item) }}" method="post" class="my-sm-1">
                                     @csrf
                                     <input class="btn btn-primary my-0" type="submit" value="削除">
                                 </form>
-                                {{-- <form action="{{ route('todo.destroy', $item) }}" method="post" class="my-sm-1">
+                                {{-- <form action="{{ route('item.destroy', $item) }}" method="post" class="my-sm-1">
                                     @csrf
                                     @method('delete')
                                     <input class="btn btn-primary my-0" type="submit" value="削除">

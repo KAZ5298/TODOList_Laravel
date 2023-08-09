@@ -27,7 +27,7 @@ class ItemController extends Controller
             $items = Item::query()->where('item_name', 'LIKE', '%' . $search . '%')->get();
         }
 
-        return view('todo.index', compact('date', 'items', 'loginUser', 'search'));
+        return view('item.index', compact('date', 'items', 'loginUser', 'search'));
     }
 
     /**
@@ -40,7 +40,7 @@ class ItemController extends Controller
 
         $users = User::all();
         $loginUser = auth()->user();
-        return view('todo.create', compact('date', 'users', 'loginUser'));
+        return view('item.create', compact('date', 'users', 'loginUser'));
     }
 
     /**
@@ -70,7 +70,7 @@ class ItemController extends Controller
 
         $item->save();
 
-        return redirect()->route('todo.index');
+        return redirect()->route('item.index');
     }
 
     /**
@@ -84,22 +84,22 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
-    {
-        $item = Item::find($id);
-        $loginUser = auth()->user();
-        $users = User::all();
-
-        return view('todo.edit', compact('item', 'loginUser', 'users'));
-    }
-
-    // public function edit(Item $item)
+    // public function edit($id)
     // {
+    //     $item = Item::find($id);
     //     $loginUser = auth()->user();
     //     $users = User::all();
 
-    //     return view('todo.edit', compact('item', 'loginUser', 'users'));
+    //     return view('item.edit', compact('item', 'loginUser', 'users'));
     // }
+
+    public function edit(Item $item)
+    {
+        $loginUser = auth()->user();
+        $users = User::all();
+
+        return view('item.edit', compact('item', 'loginUser', 'users'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -148,7 +148,7 @@ class ItemController extends Controller
 
         $item->save();
 
-        return redirect()->route('todo.index');
+        return redirect()->route('item.index');
     }
 
     /**
@@ -174,7 +174,7 @@ class ItemController extends Controller
         $item->is_deleted = 1;
         $item->save();
 
-        return redirect()->route('todo.index');
+        return redirect()->route('item.index');
     }
 
     public function delete($id)
@@ -182,7 +182,7 @@ class ItemController extends Controller
         $item = Item::find($id);
         $loginUser = auth()->user();
 
-        return view('todo.delete', compact('item', 'loginUser'));
+        return view('item.delete', compact('item', 'loginUser'));
     }
 
     public function complete($id)
@@ -196,6 +196,6 @@ class ItemController extends Controller
 
         $item->save();
 
-        return redirect()->route('todo.index');
+        return redirect()->route('item.index');
     }
 }

@@ -32,9 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('todo', ItemController::class);
-    Route::post('todo/{todo}/delete', [ItemController::class, 'delete'])->name('todo.delete');
-    Route::patch('todo/{todo}/complete', [ItemController::class, 'complete'])->name('todo.complete');
+    Route::resource('item', ItemController::class);
+    Route::post('item/{itme}/delete', [ItemController::class, 'delete'])->name('item.delete');
+    Route::patch('item/{item}/complete', [ItemController::class, 'complete'])->name('item.complete');
 
 });
 

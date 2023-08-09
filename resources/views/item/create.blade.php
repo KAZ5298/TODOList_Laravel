@@ -23,10 +23,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('todo.index') }}">作業一覧</a>
+                    <a class="nav-link" href="{{ route('item.index') }}">作業一覧</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('todo.create') }}">作業登録 <span
+                    <a class="nav-link" href="{{ route('item.create') }}">作業登録 <span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
@@ -74,7 +74,7 @@
             <div class="row my-2">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
-                    <form action="{{ route('todo.store') }}" method="post">
+                    <form action="{{ route('item.store') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="item_name">項目名</label>
