@@ -84,15 +84,6 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    // public function edit($id)
-    // {
-    //     $item = Item::find($id);
-    //     $loginUser = auth()->user();
-    //     $users = User::all();
-
-    //     return view('item.edit', compact('item', 'loginUser', 'users'));
-    // }
-
     public function edit(Item $item)
     {
         $loginUser = auth()->user();
@@ -104,27 +95,7 @@ class ItemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    // public function update(Request $request, Item $item)
-    // {
-    //     $now = Carbon::now();
-    //     $date = $now->format('Y-m-d');
-
-    //     $item->user_id = $request->user_id;
-    //     $item->item_name = $request->item_name;
-    //     $item->registration_date = $date;
-    //     $item->expire_date = $request->expire_date;
-    //     if (isset($request->finished_date)) {
-    //         $item->finished_date = $date;
-    //     } else {
-    //         $item->finished_date = null;
-    //     }
-
-    //     $item->save();
-
-    //     return redirect('./todo');
-    // }
-
-    public function update(Request $request, $item)
+    public function update(Request $request, Item $item)
     {
         $inputs = $request->validate([
             'user_id' => 'required|integer|min:1',
