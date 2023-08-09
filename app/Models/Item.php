@@ -19,6 +19,6 @@ class Item extends Model
     //     'item_name',
     //     'registration_date',
     //     'expire_date',
-    //     'finished_date',
+    //     'finished_date'
     // ];
 }

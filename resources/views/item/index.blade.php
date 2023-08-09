@@ -131,11 +131,6 @@
                                     @csrf
                                     <input class="btn btn-primary my-0" type="submit" value="削除">
                                 </form>
-                                {{-- <form action="{{ route('item.destroy', $item) }}" method="post" class="my-sm-1">
-                                    @csrf
-                                    @method('delete')
-                                    <input class="btn btn-primary my-0" type="submit" value="削除">
-                                </form> --}}
                             </td>
                         </tr>
                     @endif

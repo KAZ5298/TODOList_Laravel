@@ -70,6 +70,10 @@ class ItemController extends Controller
 
         $item->save();
 
+        // dd($item);
+
+        // $item->fill($request->all())->save();
+
         return redirect()->route('item.index');
     }
 
