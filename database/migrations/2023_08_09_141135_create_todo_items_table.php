@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('todo_items', function (Blueprint $table) {
             $table->id();
-            $table->string('user', 50);
-            $table->string('pass', 255);
-            $table->string('family_name', 50);
-            $table->string('first_name', 50);
-            $table->boolean('is_admin')->default(0);
+            $table->integer('user_id');
+            $table->string('item_name', 100)->nullable();
+            $table->date('registration_date')->nullable();
+            $table->date('expire_date')->nullable();
+            $table->date('finished_date')->nullable();
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('todo_items');
     }
 };
