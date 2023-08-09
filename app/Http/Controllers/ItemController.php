@@ -167,10 +167,8 @@ class ItemController extends Controller
         return view('item.delete', compact('item', 'loginUser'));
     }
 
-    public function complete($id)
+    public function complete(Item $item)
     {
-        $item = Item::find($id);
-
         $now = Carbon::now();
         $date = $now->format('Y-m-d');
 
