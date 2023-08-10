@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>作業一覧</title>
-    {{-- <link rel="stylesheet" href="../css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <style>
         /* ボタンを横並びにする */
@@ -53,18 +52,8 @@
                         <div class="dropdown-divider"></div>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <a class="dropdown-item" href="{{ route('logout') }}">ログアウト</a>
+                            <button class="dropdown-item">ログアウト</button>
                         </form>
-                        {{-- <a class="dropdown-item" href="{{ route('logout') }}">ログアウト</a> --}}
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('ログアウト') }}
-                            </x-dropdown-link>
-                        </form>
-
                     </div>
                 </li>
             </ul>
@@ -155,8 +144,6 @@
     <!-- コンテナ ここまで -->
 
     <!-- 必要なJavascriptを読み込む -->
-    {{-- <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../js/bootstrap.bundle.min.js"></script> --}}
     <script src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 

@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>削除確認</title>
-    {{-- <link rel="stylesheet" href="../css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
 </head>
 
@@ -35,7 +34,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../login/logout.php">ログアウト</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="dropdown-item">ログアウト</button>
+                        </form>
                     </div>
                 </li>
             </ul>
@@ -95,8 +97,6 @@
     <!-- コンテナ ここまで -->
 
     <!-- 必要なJavascriptを読み込む -->
-    {{-- <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../js/bootstrap.bundle.min.js"></script> --}}
     <script src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 
