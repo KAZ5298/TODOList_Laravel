@@ -6,13 +6,14 @@ use App\Models\Item;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Requests\ItemRequest;
 
 class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(ItemRequest $request)
     {
         $now = Carbon::now();
         $date = $now->format('Y-m-d');
@@ -46,13 +47,9 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
-        $inputs = $request->validate([
-            'user_id' => 'required|integer|min:1',
-            'item_name' => 'required|max:100',
-            'expire_date' => 'required|date'
-        ]);
+        $inputs = $request->validated();
 
         $now = Carbon::now();
         $date = $now->format('Y-m-d');
@@ -99,13 +96,9 @@ class ItemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Item $item)
+    public function update(ItemRequest $request, Item $item)
     {
-        $inputs = $request->validate([
-            'user_id' => 'required|integer|min:1',
-            'item_name' => 'required|max:100',
-            'expire_date' => 'required|date'
-        ]);
+        $inputs = $request->validated();
 
         $now = Carbon::now();
         $date = $now->format('Y-m-d');

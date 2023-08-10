@@ -63,13 +63,13 @@
             </div>
 
             <!-- エラーメッセージ -->
-            <div class="row my-2">
+            {{-- <div class="row my-2">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6 alert alert-danger alert-dismissble fade show">
                     担当者を選択してください。 <button class="close" data-dismiss="alert">&times;</button>
                 </div>
                 <div class="col-sm-3"></div>
-            </div>
+            </div> --}}
             <!-- エラーメッセージ ここまで -->
 
             <!-- 入力フォーム -->
