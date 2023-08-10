@@ -40,8 +40,8 @@
                     @csrf
                     <div class="form-group">
                         <label for="user">ユーザー名</label>
-                        {{-- <input type="text" class="form-control" id="user" name="user"> --}}
-                        <input type="text" class="form-control" id="email" name="email">
+                        <input type="text" class="form-control" id="user" name="user">
+                        {{-- <input type="text" class="form-control" id="email" name="email"> --}}
                     </div>
                     <div class="form-group">
                         <label for="password">パスワード</label>
