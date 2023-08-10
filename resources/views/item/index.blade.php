@@ -56,7 +56,6 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{ route('item.index') }}" method="GET">
-                {{-- @csrf --}}
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                     name="search" value="{{ $search }}">
                 <button class="btn btn-outline-light my-2 my-sm-0" type="submit">検索</button>
@@ -145,7 +144,7 @@
     <!-- 必要なJavascriptを読み込む -->
     {{-- <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script> --}}
-    <script src="{{ asset('/js/jquery-3.4.1.min.js"') }}"></script>
+    <script src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>

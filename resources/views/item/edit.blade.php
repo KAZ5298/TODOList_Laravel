@@ -104,7 +104,8 @@
                     </div>
 
                     <input type="submit" value="更新" class="btn btn-primary">
-                    <input type="button" value="キャンセル" class="btn btn-outline-primary" onclick="location.href='../';">
+                    <input type="button" value="キャンセル" class="btn btn-outline-primary"
+                        onclick="location.href='../';">
                 </form>
             </div>
             <div class="col-sm-3"></div>
@@ -117,7 +118,7 @@
     <!-- 必要なJavascriptを読み込む -->
     {{-- <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script> --}}
-    <script src="{{ asset('/js/jquery-3.4.1.min.js"') }}"></script>
+    <script src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
