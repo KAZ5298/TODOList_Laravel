@@ -51,7 +51,20 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ route('logout') }}">ログアウト</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a class="dropdown-item" href="{{ route('logout') }}">ログアウト</a>
+                        </form>
+                        {{-- <a class="dropdown-item" href="{{ route('logout') }}">ログアウト</a> --}}
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('ログアウト') }}
+                            </x-dropdown-link>
+                        </form>
+
                     </div>
                 </li>
             </ul>
