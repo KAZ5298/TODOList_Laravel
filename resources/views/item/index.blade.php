@@ -51,7 +51,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../login/logout.php">ログアウト</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}">ログアウト</a>
                     </div>
                 </li>
             </ul>
