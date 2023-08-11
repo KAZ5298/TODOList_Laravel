@@ -14,14 +14,17 @@ class ItemController extends Controller
      */
 
     private $item;
+    private $user;
+
     public function __construct()
     {
         $this->item = new Item();
+        $this->user = new User();
     }
 
     public function index(Request $request)
     {
-        $date = getDate();
+        $date = $this->item->getDate();
 
         $loginUser = auth()->user();
 
@@ -41,11 +44,12 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $item = new Item;
-        $date = $item->getDate();
+        $date = $this->item->getDate();
 
-        $users = User::all();
         $loginUser = auth()->user();
+
+        $users = $this->user->getAllUser();
+
         return view('item.create', compact('date', 'users', 'loginUser'));
     }
 
@@ -55,7 +59,7 @@ class ItemController extends Controller
     public function store(ItemRequest $request)
     {
         $item = new Item;
-        $date = $item->getDate();
+        $date = $this->item->getDate();
 
         $item = $item->fill($request->all());
         $item->registration_date = $date;
@@ -84,7 +88,8 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         $loginUser = auth()->user();
-        $users = User::all();
+        
+        $users = $this->user->getAllUser();
 
         return view('item.edit', compact('item', 'loginUser', 'users'));
     }
