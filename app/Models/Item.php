@@ -36,6 +36,14 @@ class Item extends Model
         return $searchItems;
     }
 
+    // public function itemInsert($user_id, $item_name, $expire_date, $finished_date)
+    // {
+    //     $date = $this->getDate();
+    //     if (isset($finished_date)){
+
+    //     }
+    // }
+
     protected $fillable = [
         'user_id',
         'item_name',

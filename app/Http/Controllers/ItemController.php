@@ -69,6 +69,10 @@ class ItemController extends Controller
             $item->finished_date = null;
         }
 
+        // $item = $this->item->itemInsert($request['user_id'], $request['item_name'], $request['expire_date'], $request['finished_date']);
+
+        // dd($request);
+
         $item->save();
 
         return redirect()->route('item.index');
