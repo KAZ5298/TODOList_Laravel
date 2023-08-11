@@ -24,8 +24,6 @@ class Item extends Model
     protected $fillable = [
         'user_id',
         'item_name',
-        'registration_date',
         'expire_date',
-        'finished_date'
     ];
 }
