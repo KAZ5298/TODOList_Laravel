@@ -26,6 +26,7 @@ class ItemRequest extends FormRequest
             'user_id' => ['required', 'integer', 'exists:users,id'],
             'item_name' => ['required', 'max:100'],
             'expire_date' => ['required', 'date'],
+            'finished_date' => ['boolean'],
         ];
     }
 
@@ -39,6 +40,7 @@ class ItemRequest extends FormRequest
             'item_name.max' => '項目名は１００文字以下で入力して下さい。',
             'expire_date.required' => '期限が空白です。',
             'expire_date.date' => '不正な形式の期限です。',
+            'finished_date.boolean' => '完了のチェックボックスの値が正しくありません。',
         ];
     }
 }

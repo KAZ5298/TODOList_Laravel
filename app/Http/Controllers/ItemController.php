@@ -15,8 +15,8 @@ class ItemController extends Controller
      */
     public function index(Request $request)
     {
-        $now = Carbon::now();
-        $date = $now->format('Y-m-d');
+        $item = new Item;
+        $date = $item->getDate();
 
         $loginUser = auth()->user();
 
@@ -36,8 +36,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $now = Carbon::now();
-        $date = $now->format('Y-m-d');
+        $item = new Item;
+        $date = $item->getDate();
 
         $users = User::all();
         $loginUser = auth()->user();
@@ -49,16 +49,11 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
-        $inputs = $request->validated();
+        $item = new Item;
+        $date = $item->getDate();
 
-        $now = Carbon::now();
-        $date = $now->format('Y-m-d');
-
-        $item = new Item();
-        $item->user_id = $inputs['user_id'];
-        $item->item_name = $inputs['item_name'];
+        $item = $item->fill($request->all());
         $item->registration_date = $date;
-        $item->expire_date = $inputs['expire_date'];
         if (isset($request->finished_date)) {
             $item->finished_date = $date;
         } else {
@@ -94,14 +89,9 @@ class ItemController extends Controller
      */
     public function update(ItemRequest $request, Item $item)
     {
-        $inputs = $request->validated();
+        $date = $item->getDate();
 
-        $now = Carbon::now();
-        $date = $now->format('Y-m-d');
-
-        $item->user_id = $inputs['user_id'];
-        $item->item_name = $inputs['item_name'];
-        $item->expire_date = $inputs['expire_date'];
+        $item = $item->fill($request->all());
         if (isset($request->finished_date)) {
             $item->finished_date = $date;
         } else {
@@ -133,8 +123,7 @@ class ItemController extends Controller
 
     public function complete(Item $item)
     {
-        $now = Carbon::now();
-        $date = $now->format('Y-m-d');
+        $date = $item->getDate();
 
         $item->finished_date = $date;
 

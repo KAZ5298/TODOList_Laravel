@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Item extends Model
 {
@@ -14,11 +15,17 @@ class Item extends Model
         return $this->belongsTo(User::class);
     }
 
-    // protected $fillable = [
-    //     'user_id',
-    //     'item_name',
-    //     'registration_date',
-    //     'expire_date',
-    //     'finished_date'
-    // ];
+    public function getDate()
+    {
+        $date = Carbon::now()->format('Y-m-d');
+        return $date;
+    }
+
+    protected $fillable = [
+        'user_id',
+        'item_name',
+        'registration_date',
+        'expire_date',
+        'finished_date'
+    ];
 }

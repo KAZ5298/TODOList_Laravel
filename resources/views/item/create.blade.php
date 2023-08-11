@@ -104,7 +104,7 @@
                                 value="{{ $date }}">
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="finished_date" name="finished_date">
+                            <input type="checkbox" class="form-check-input" id="finished_date" name="finished_date" value="1">
                             <label for="finished_date">完了</label>
                         </div>
 
