@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
+use PHPUnit\TextUI\Configuration\Builder;
 
 class ItemController extends Controller
 {
@@ -25,7 +26,10 @@ class ItemController extends Controller
         if (empty($search)) {
             $items = Item::orderBy('expire_date', 'asc')->get();
         } else {
-            $items = Item::query()->where('item_name', 'LIKE', '%' . $search . '%')->get();
+            $items = Item::where('item_name', 'LIKE', '%' . $search . '%')
+                ->orwhereHas('user', function ($q) use ($search) {
+                    $q->where('name', 'LIKE', '%' . $search . '%');
+                })->get();
         }
 
         return view('item.index', compact('date', 'items', 'loginUser', 'search'));
