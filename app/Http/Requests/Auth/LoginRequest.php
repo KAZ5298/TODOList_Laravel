@@ -28,7 +28,7 @@ class LoginRequest extends FormRequest
     {
         return [
             // 'email' => ['required', 'string', 'email'],
-            'user' => ['required', 'string'],
+            'user' => ['required', 'string', 'exists:users,user'],
             'password' => ['required', 'string'],
         ];
     }
@@ -88,6 +88,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'user.required' => 'ユーザーIDが空白です。',
+            'user.exists' => '存在しないユーザーです。',
             'password.required' => 'パスワードが空白です。',
         ];
     }

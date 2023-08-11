@@ -13,7 +13,7 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(ItemRequest $request)
+    public function index(Request $request)
     {
         $now = Carbon::now();
         $date = $now->format('Y-m-d');
@@ -66,10 +66,6 @@ class ItemController extends Controller
         }
 
         $item->save();
-
-        // dd($item);
-
-        // $item->fill($request->all())->save();
 
         return redirect()->route('item.index');
     }

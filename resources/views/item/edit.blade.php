@@ -61,13 +61,19 @@
         </div>
 
         <!-- エラーメッセージ -->
-        <div class="row my-2">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6 alert alert-danger alert-dismissble fade show">
-                担当者を選択してください。 <button class="close" data-dismiss="alert">&times;</button>
+        @if ($errors->any())
+            <div class="row my-2">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 alert alert-danger alert-dismissble fade show">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul> <button class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <div class="col-sm-3"></div>
             </div>
-            <div class="col-sm-3"></div>
-        </div>
+        @endif
         <!-- エラーメッセージ ここまで -->
 
         <!-- 入力フォーム -->

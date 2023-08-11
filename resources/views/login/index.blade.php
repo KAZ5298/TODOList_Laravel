@@ -24,22 +24,19 @@
             <div class="col-sm-3"></div>
         </div>
 
-        {{-- @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+        @if ($errors->any())
+            <div class="row my-2">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 alert alert-danger alert-dismissble fade show">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul> <button class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <div class="col-sm-3"></div>
             </div>
-        @endif --}}
-        {{-- <div class="row my-2">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6 alert alert-danger alert-dismissble fade show">
-                ユーザー名またはパスワードが違います。 <button class="close" data-dismiss="alert">&times;</button>
-            </div>
-            <div class="col-sm-3"></div>
-        </div> --}}
+        @endif
 
         <div class="row my-2">
             <div class="col-sm-3"></div>

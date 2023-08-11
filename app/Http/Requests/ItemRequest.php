@@ -12,11 +12,7 @@ class ItemRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if (auth::check()) {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }
 
     /**
@@ -27,9 +23,9 @@ class ItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|integer|exists:users,id',
-            'item_name' => 'required|max:100',
-            'expire_date' => 'required|date',
+            'user_id' => ['required', 'integer', 'exists:users,id'],
+            'item_name' => ['required', 'max:100'],
+            'expire_date' => ['required', 'date'],
         ];
     }
 
