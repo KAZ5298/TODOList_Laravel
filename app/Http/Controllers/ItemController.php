@@ -6,29 +6,31 @@ use App\Models\Item;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
-use PHPUnit\TextUI\Configuration\Builder;
 
 class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    private $item;
+    public function __construct()
+    {
+        $this->item = new Item();
+    }
+
     public function index(Request $request)
     {
-        $item = new Item;
-        $date = $item->getDate();
+        $date = getDate();
 
         $loginUser = auth()->user();
 
         // 通常の一覧表示か、検索結果か
         $search = $request->input('search');
         if (empty($search)) {
-            $items = Item::orderBy('expire_date', 'asc')->get();
+            $items = $this->item->getAllItemOrderByExpireDate();
         } else {
-            $items = Item::where('item_name', 'LIKE', '%' . $search . '%')
-                ->orwhereHas('user', function ($q) use ($search) {
-                    $q->where('name', 'LIKE', '%' . $search . '%');
-                })->get();
+            $items = $this->item->getSearchItem($search);
         }
 
         return view('item.index', compact('date', 'items', 'loginUser', 'search'));

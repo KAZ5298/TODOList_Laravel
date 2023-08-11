@@ -21,6 +21,21 @@ class Item extends Model
         return $date;
     }
 
+    public function getAllItemOrderByExpireDate()
+    {
+        return Item::orderBy('expire_date', 'asc')->get();
+    }
+
+    public function getSearchItem($search)
+    {
+        $searchItems = Item::where('item_name', 'LIKE', '%' . $search . '%')
+            ->orwhereHas('user', function ($q) use ($search) {
+                $q->where('name', 'LIKE', '%' . $search . '%');
+            })->get();
+
+        return $searchItems;
+    }
+
     protected $fillable = [
         'user_id',
         'item_name',
