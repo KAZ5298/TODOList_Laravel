@@ -32,7 +32,7 @@ class ItemRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_id.requied' => '担当者を選択して下さい。',
+            'user_id.required' => '担当者を選択して下さい。',
             'user_id.integer' => '不正な担当者です。',
             'user_id.exists' => 'ユーザー一覧に存在しない担当者です。',
             'item_name.required' => '項目名が空白です。',

@@ -88,7 +88,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'user.required' => 'ユーザーIDが空白です。',
-            'user.exists' => '存在しないユーザーです。',
+            'user.exists' => 'ユーザー名またはパスワードが違います。',
             'password.required' => 'パスワードが空白です。',
         ];
     }
