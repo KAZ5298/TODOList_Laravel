@@ -17,8 +17,7 @@ class Item extends Model
 
     public function getDate()
     {
-        $date = Carbon::now()->format('Y-m-d');
-        return $date;
+        return Carbon::now()->format('Y-m-d');
     }
 
     public function getAllItemOrderByExpireDate()
@@ -36,17 +35,28 @@ class Item extends Model
         return $searchItems;
     }
 
-    // public function itemInsert($user_id, $item_name, $expire_date, $finished_date)
+    // public function insertItem($request)
     // {
-    //     $date = $this->getDate();
-    //     if (isset($finished_date)){
-
+    //     $date = getDate();
+    //     $item = $request;
+    //     $item->registration_date = $date;
+    //     if ($request->finished_date != 1) {
+    //         $item->finished_date = null;
+    //     } else {
+    //         $item->finished_date = $date;
     //     }
+
+    //     dd($item, $request);
+
+    //     // return $item->save();
+
+    //     $item->save();
     // }
 
     protected $fillable = [
         'user_id',
         'item_name',
         'expire_date',
+        'finished_date',
     ];
 }

@@ -58,10 +58,9 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
-        $item = new Item;
         $date = $this->item->getDate();
 
-        $item = $item->fill($request->all());
+        $item = $this->item->fill($request->all());
         $item->registration_date = $date;
         if (isset($request->finished_date)) {
             $item->finished_date = $date;
@@ -69,11 +68,8 @@ class ItemController extends Controller
             $item->finished_date = null;
         }
 
-        // $item = $this->item->itemInsert($request['user_id'], $request['item_name'], $request['expire_date'], $request['finished_date']);
-
-        // dd($request);
-
         $item->save();
+        // $this->item->insertItem($item);
 
         return redirect()->route('item.index');
     }
@@ -92,7 +88,7 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         $loginUser = auth()->user();
-        
+
         $users = $this->user->getAllUser();
 
         return view('item.edit', compact('item', 'loginUser', 'users'));
@@ -103,7 +99,7 @@ class ItemController extends Controller
      */
     public function update(ItemRequest $request, Item $item)
     {
-        $date = $item->getDate();
+        $date = $this->item->getDate();
 
         $item = $item->fill($request->all());
         if (isset($request->finished_date)) {
@@ -137,7 +133,7 @@ class ItemController extends Controller
 
     public function complete(Item $item)
     {
-        $date = $item->getDate();
+        $date = $this->item->getDate();
 
         $item->finished_date = $date;
 
